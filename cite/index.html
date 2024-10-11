@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="index.css">
+        <title>Document</title>
+    </head>
+    <body>  
+        
+        <h1>Calculadora De IMC</h1>
+
+        <div class="calculadora">
+            <label>Altura (m):</label>
+            <input placeholder="1.11" type="text" id="altura">
+
+            <label>Peso (kg):</label>
+            <input placeholder="44" type="text" id="peso">
+
+            <button id="calcular">Calcular</button>
+
+            <h2 id="resultado"></h2>
+
+        </div>    
+        
+        <a target="_blank" href="https://youtu.be/788VybbHkg8?si=hjWyQm7rJj4tQRD4"><button class="whey">Whey Gratis!!!</button></a>
+
+        <script>
+            function calcular() {
+                let alturaSt = document.getElementById("altura");
+                let pesoSt = document.getElementById("peso");
+                let resultado = document.getElementById("resultado");
+
+                let pesoFl = parseFloat(pesoSt.value);
+                let alturaFl = parseFloat(alturaSt.value);
+
+                if (alturaFl > 0) {
+                    let imc = pesoFl / (alturaFl * alturaFl);
+                    let classificacao = "";
+
+                    if (imc < 18.5) {
+                        classificacao = "Abaixo do peso"
+                    } else if (imc >= 18.5 && imc < 25) {
+                        classificacao = "Peso normal"
+                    } else if (imc >= 25 && imc < 30) {
+                        classificacao = "Sobrepeso"
+                    } else {
+                        classificacao = "Obesidade"
+                    }
+
+                    resultado.textContent = "Seu IMC (Índice de Massa Corporal) é: " + imc.toFixed(2) + " - Classificação: " + classificacao
+                }
+                 else {
+                    resultado.textContent = "Por favor, insira uma altura válida."
+                }
+            }
+
+            let botao = document.getElementById("calcular");
+            botao.addEventListener('click', calcular);
+        </script>
+    </body>
+</html>
